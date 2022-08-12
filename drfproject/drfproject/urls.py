@@ -16,9 +16,10 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from parser_lenta.views import GetDataApi
+from parser_lenta.views import *
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/v1/getdata/', GetDataApi.as_view())
+    path('api/v1/getdata/', GetDataApi.as_view()),
+    path('api/v1/getdata2/', GetDataApi2.as_view()),
 ]
