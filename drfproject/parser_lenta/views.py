@@ -1,11 +1,12 @@
 import json
+from django.views.generic import TemplateView
 from rest_framework import generics
 from django.shortcuts import render
 
+from .models import Product
 from .serializers import LentaSerializer
 
 
 class GetDataApi(generics.ListAPIView):
-    with open("D:\Git\Work_with_django_REST_framework\drfproject\parser_lenta\ovoshchi.json", encoding="utf-8") as file:
-        queryset = json.load(file)
+    queryset = Product.objects.all()
     serializer_class = LentaSerializer

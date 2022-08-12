@@ -1,7 +1,8 @@
 from rest_framework import serializers
+from .models import Product
 
 
-class LentaSerializer(serializers.Serializer):
-    name = serializers.CharField()
-    price = serializers.FloatField
-    url = serializers.CharField()
+class LentaSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Product
+        fields = ('name', 'price', 'slug')
