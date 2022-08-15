@@ -22,4 +22,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/v1/getdata/', GetDataApi.as_view()),
     path('api/v1/getdata2/', GetDataApi2.as_view()),
+    path('api/v1/getdata3/', GetDataApi3.as_view()),
+    path('api/v1/getdata3/<int:pk>/', GetDataApi3.as_view()),
 ]
