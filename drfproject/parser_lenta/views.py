@@ -15,19 +15,21 @@ class GetDataApi(generics.ListAPIView):
     serializer_class = LentaSerializer
 
 
-class GetDataApi2(APIView):
-    def get(self, request):
-        with open("parser_lenta/ovoshchi.json", encoding="utf-8") as file:
-            products_dict = json.load(file)
-        return Response(products_dict)
-
-    def post(self, request):
-        new_product = Product.objects.create(
-            name=request.data['name'],
-            slug=request.data['slug'],
-            price=request.data['price']
-        )
-        return Response({'post': model_to_dict(new_product)})
+class GetDataApi2(generics.ListCreateAPIView):
+    queryset = Product.objects.all()
+    serializer_class = LentaSerializer2
+    # def get(self, request):
+    #     with open("parser_lenta/ovoshchi.json", encoding="utf-8") as file:
+    #         products_dict = json.load(file)
+    #     return Response(products_dict)
+    #
+    # def post(self, request):
+    #     new_product = Product.objects.create(
+    #         name=request.data['name'],
+    #         slug=request.data['slug'],
+    #         price=request.data['price']
+    #     )
+    #     return Response({'post': model_to_dict(new_product)})
 
 
 class GetDataApi3(APIView):
